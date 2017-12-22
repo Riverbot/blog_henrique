@@ -25,7 +25,7 @@ SECRET_KEY = '&k&egfbt2n70%a5!rlw0w+8c=vklmscxyavo92rzb$8ol7-c%@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['reaverbot.pythonanywhere.com']
 
 
 # Application definition
