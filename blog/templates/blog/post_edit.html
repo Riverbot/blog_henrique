@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+<main role="main" class="container">
+	<div class="row">
+		<div class="col-sm-8 blog-main">
+			<div class="blog-post">
+				<h2 class="blog-post-title">Novo Post</h2>
+				<form method="POST">
+					{% csrf_token %}
+
+					<div class="form-group">
+						<label for="title">Título</label>
+						<input id="title" type="text" name="title" class="form-control" value="{{ form.title.value }}">
+					</div>
+					<div class="form-group">
+						<label for="text">Texto</label>
+						<textarea id="text" name="text" class="form-control" rows="5">{{ form.text.value }}</textarea>
+					</div>
+					<button type="submit" class="btn btn-primary">Enviar</button>
+				</form>
+			</div><!-- /.blog-post -->
+		</div><!-- /.blog-main -->
+
+	</div><!-- /.row -->
+
+</main><!-- /.container -->
+
+{% endblock %}
