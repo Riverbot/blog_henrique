@@ -14,6 +14,7 @@ body {
   font-family: Georgia, "Times New Roman", Times, serif;
   background-color: #efefef;
   color: #555;
+  margin-left: 15rem;
 }
 
 h1,
@@ -46,10 +47,35 @@ h2 a {
  * Override Bootstrap's default container.
  */
 
-.container {
-  max-width: 60rem;
+
+/*
+ * Sidenav
+ */
+
+.sidenav {
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+    text-align: center;
 }
 
+.sidenav a {
+    padding: 6px 6px 6px 6px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
 
 /*
  * Masthead for nav
@@ -146,7 +172,6 @@ h2 a {
 .blog-pagination > .btn {
   border-radius: 2rem;
 }
-
 
 /*
  * Blog posts

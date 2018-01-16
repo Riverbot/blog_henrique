@@ -1,27 +1,30 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-<main role="main" class="container">
-  <div class="row">
+<header>
+  <div class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">{{ post.title }}</h1>
+    </div>
+  </div>
+</header>
 
-    <div class="col-sm-8 blog-main">
+<main role="main" class="container">
+  <div class="blog-masthead">
+    <div class="sidenav">
+      <nav class="nav flex-column">
+        {% for topic in posts %}
+          <a class="nav-link" href="{% url 'monta_url' category topic.pk %} ">{{ topic.title }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 blog-main">
       <div class="blog-post">
-        <h2 class="blog-post-title">{{ post.title }}</h2>
-        <p class="blog-post-meta">{{ post.published_date }} by <a href="#">{{ post.author }}</a></p>
         <p>{{ post.text|linebreaksbr }}</p>
       </div><!-- /.blog-post -->
     </div><!-- /.blog-main -->
-
-    <aside class="col-sm-3 ml-sm-auto blog-sidebar">
-      <div class="sidebar-module">
-        <h4>Elsewhere</h4>
-        <ol class="list-unstyled">
-          <li><a href="https://github.com/riverbot">GitHub</a></li>
-          <li><a href="https://twitter.com/Reaverb0t">Twitter</a></li>
-        </ol>
-      </div>
-    </aside><!-- /.blog-sidebar -->
-
   </div><!-- /.row -->
-
 </main><!-- /.container -->
 {% endblock %}

@@ -1,17 +1,26 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from django.core.paginator import Paginator
 from .models import Post
+from .models import Category
 from .forms import PostForm
 
 # Create your views here.
 def home(request):
-	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-	context = {'posts' : posts}
-	return render(request, 'blog/home.html', context)
+	post = Post.objects.all()
+	return render(request, 'blog/home.html', {})
 
-def post_detail(request, pk):
-	post = get_object_or_404(Post, pk = pk)
-	context = {'post' : post}
+def resume(request):
+	return render(request, 'blog/resume.html', {})
+
+def post_detail(request, category, pk=None):
+	if pk == None:
+		pk = Post.objects.all().filter(category = Category.objects.get(title = category))[0].pk
+	posts = Post.objects.all().filter(category = Category.objects.get(title = category))
+	post = get_object_or_404(posts, pk = pk)
+	context = { 'post' : post,
+				'posts' : posts,
+				'category' : category}
 	return render(request, 'blog/post_detail.html', context)
 
 def post_new(request):
